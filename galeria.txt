@@ -1,0 +1,29 @@
+-- phpMyAdmin SQL Dump
+-- 
+-- Servidor: localhost
+-- 
+-- Banco de Dados: `galeria`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Estrutura da tabela `fotos`
+-- 
+
+CREATE TABLE `fotos` (
+  `id` int(11) NOT NULL default '0',
+  `evento` varchar(255) NOT NULL default '',
+  `comentario` varchar(255) NOT NULL default '',
+  `path` varchar(255) NOT NULL default '',
+  `data` date NOT NULL default '0000-00-00',
+  `data_cad` date NOT NULL default '0000-00-00',
+  `data_alt` date NOT NULL default '0000-00-00',
+  `ip` varchar(100) NOT NULL default '',
+  `status` varchar(50) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+
+-- 
+-- Extraindo dados da tabela `fotos`
+-- 
