@@ -10,11 +10,34 @@
     <td colspan="2"><div align="center"> 
         Cabecalho aqui </div></td>
   </tr>
-  <tr> 
-    <td width="22%" height="56" valign="top"> 
-      Menu lateral aqui
-    </td>
-    <td valign="top"> <p align="center"> <?php
+   <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+GALERIA VIRTUAL                    </a>
+                </li>
+                <li>
+                    <a href="galeria.php">Galeria</a>
+                </li>
+                <li>
+                    <a href="upload.php">Upload de fotos</a>
+                </li>
+                 <li>
+                    <a href="#">Sobre nós</a>
+                </li>
+                <li>
+                    <a href="#">Serviços</a>
+                </li>
+                <li>
+                    <a href="#">Contato</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+    <td valign="top"> <p align="center">
+	
+	 <?php
 // Conex�o com o BD
 include "conecta_mysql.inc";
 // Pegar a p�gina atual por GET
@@ -129,5 +152,18 @@ echo "<a href='galeria.php?p=".$pags."' target='_self'>�ltima P�gina</a></st
         Rodape; aqui </div></td>
   </tr>
 </table>
+ <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 </body>
 </html>
