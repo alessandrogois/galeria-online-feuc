@@ -1,47 +1,9 @@
-<html>
-<head>
-<title>Seu titulo</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-</head>
-<body text="#000000" link="#000000" vlink="#000000" alink="#000000">
-<body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr> 
-    <td colspan="2"><div align="center"> 
-        Cabecalho aqui </div></td>
-  </tr>
-   <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="index.html">
-GALERIA VIRTUAL                    </a>
-                </li>
-                <li>
-                    <a href="galeria.php">Galeria</a>
-                </li>
-                <li>
-                    <a href="upload.php">Upload de fotos</a>
-                </li>
-                 <li>
-                    <a href="#">Sobre nós</a>
-                </li>
-                <li>
-                    <a href="#">Serviços</a>
-                </li>
-                <li>
-                    <a href="#">Contato</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-    <td valign="top"> <p align="center">
-	
-	 <?php
+ <?php
+   include("index.html");
 // Conex�o com o BD
 include "conecta_mysql.inc";
-// Pegar a p�gina atual por GET
-$p = $IMPUT_GET["p"];
+// Pegar a pagina atual por GET
+$p = $_GET["p"];
 // Verifica se a variavel ta declarada, senao deixa na primeira pagina como padrao
 if(isset($p))
 {
@@ -59,10 +21,10 @@ $inicio = ($p*$qnt) - $qnt;
 // Seleciona no banco de dados com o LIMIT indicado pelos numeros acima
 $sql_select = "SELECT * FROM fotos where status='Sim' GROUP BY evento ORDER BY data desc LIMIT $inicio, $qnt";
 // Executa o Query
-$sql_query = mysql_query($sql_select);
+$sql_query = mysqli_query($conexao, $sql_select);
 echo'<br>';
 // executar query
-if ($sql_query==0)
+if ($sql_query=="0")
 {
 	echo'<br>';
 	echo'<p align="center"><font size="2" face="Verdana"><strong>GALERIA DE FOTOS VAZIA</strong></font></p>';
@@ -82,7 +44,7 @@ else
     <div align="center"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><strong>EVENTO</strong></font></div></td>
   	</tr>
 	</table>';//T�tulo da tabela//T�tulo da tabela';;
-	while (list($id,$evento,$comentario,$path,$data,$data_cad,$data_alt,$ip,$status) = mysql_fetch_array($sql_query))//Por ser uma lista, os sampos devem ser seguidos conforme a sequ�ncia no Banco de Dados. Caso n�o queira todos os campos, deixar espa�os em branco
+	while (list($id,$evento,$comentario,$path,$data,$data_cad,$data_alt,$ip,$status) = mysqli_fetch_array($sql_query))//Por ser uma lista, os sampos devem ser seguidos conforme a sequ�ncia no Banco de Dados. Caso n�o queira todos os campos, deixar espa�os em branco
  		{
 			//echo "<li> $titulo - $autor";
 			//echo'<body text="#FFFFFF" link="#FFFFFF" vlink="#000066" alink="#FFFFFF">
@@ -100,9 +62,9 @@ echo "<br />";
 // para pegarmos o n�mero total de registros
 $sql_select_all = "SELECT * FROM fotos where status='Sim' GROUP BY evento ORDER BY data desc";
 // Executa o query da sele��o acimas
-$sql_query_all = mysql_query($sql_select_all);
+$sql_query_all = mysqli_query($conexao, $sql_select_all);
 // Gera uma vari�vel com o n�mero total de registros no banco de dados
-$total_registros = mysql_num_rows($sql_query_all);
+$total_registros = mysqli_num_rows($sql_query_all);
 // Gera outra vari�vel, desta vez com o n�mero de p�ginas que ser� precisa. 
 // O comando ceil() arredonda 'para cima' o valor
 $pags = ceil($total_registros/$qnt);
@@ -149,7 +111,7 @@ echo "<a href='galeria.php?p=".$pags."' target='_self'>�ltima P�gina</a></st
   </tr>
   <tr> 
     <td height="18" colspan="2"> <div align="center"> 
-        Rodape; aqui </div></td>
+        </div></td>
   </tr>
 </table>
  <!-- jQuery -->

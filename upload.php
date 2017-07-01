@@ -1,19 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>Upload de arquivos</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-</head>
+<!DOCTYPE html>
 
-<body>
-<?php
 
+
+   <?php
+include("menu.html");
 //Pegar os dados
-	$evento=$INPUT_POST["evento"];
-	$dia=$INPUT_POST["dia"];
-	$mes=$INPUT_POST["mes"];
-	$comentario=$INPUT_POST["comentario"];
-	$ano=$INPUT_POST["ano"];
+	$evento= $_POST["evento"];
+	$dia=$_POST["dia"];
+	$mes=$_post["mes"];
+	$comentario=$_post["comentario"];
+	$ano=$_post["ano"];
 	$data=$ano.$mes.$dia;
 	$data_cad=date('Y-m-d');
 	$data_alt=date('Y-m-d');
@@ -36,7 +32,7 @@ if(isset($_FILES["arquivo"]))
 	//conecta no banco
 	include "conecta_mysql.inc";
 	//Gravar o path no banco
-	mysql_query("INSERT INTO fotos VALUES ('','$evento','$comentario','$arquivo_nome','$data','$data_cad','$data_alt','$ip','$status')"); 
+	mysqli_query("INSERT INTO fotos VALUES ('','$evento','$comentario','$arquivo_nome','$data','$data_cad','$data_alt','$ip','$status')"); 
 		echo'<br>';
 	    echo '<p align="center"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>UPLOAD REALIZADO COM SUCESSO!!</strong></font></p>';
 	    echo '<p align="center"><a href="#" onClick="history.back();"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>&lt;&lt; 
@@ -52,7 +48,7 @@ else
                 VOLTAR</strong></font></a><p></p>';
 
 }
-mysql_close($mysql_conexao);//fecha a conex�o com o banco de dados
+mysqli_close(0);//fecha a conex�o com o banco de dados
 
 ?>
 </body>

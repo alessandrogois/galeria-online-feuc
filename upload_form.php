@@ -1,19 +1,22 @@
+﻿<!DOCTYPE html>
+
 <html>
-<head>
-<title>Seu t&iacute;tulo</title>
+
+<title>GALERIA VIRTUAL</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-</head>
+
 <body text="#000000" link="#000000" vlink="#000000" alink="#000000">
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr> 
-    <td colspan="2"><div align="center">Cabe&ccedil;alho aqui  
+    <td colspan="2"><div align="center">Cabecalho aqui  
         </div></td>
   </tr>
   <tr> 
     <td width="22%" height="19" valign="top">    
-      <div align="left">Menu lateral aqui </div></td>
-    <td width="78%" valign="top"><form name = "form1" method = "post" action = "upload.php" enctype = "multipart/form-data">
+      <div align="left"></div></td>
+    <td width="78%" valign="top">
+        <form name = "form1" action = "upload.php" method = "post" enctype = "multipart/form-data">
       <div align="center">
         <p><br>
             <font face="Verdana" size="4">CADASTRO DE FOTOS NA GALERIA</font></p>
@@ -25,7 +28,9 @@
             </font></td>
           </tr>
           <tr>
-            <td><div align="right"><strong><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Data:</font></strong></div></td>
+            <td><div align="right">
+                    <strong><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Data:
+                        </font></strong></div></td>
             <td width="73%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Dia:
                   <select name="dia" id="dia">
                     <option value="01">01</option>
@@ -60,7 +65,7 @@
                     <option value="30">30</option>
                     <option value="31">31</option>
                   </select>
-          M&ecirc;s:
+          Mes:
           <select name="mes" id="select5">
             <option value="01">Jan</option>
             <option value="02">Fev</option>
@@ -77,10 +82,10 @@
           </select>
           Ano:
           <input name="ano" type="text" id="ano_nasc" size="6" maxlength="4">
-          (4 d&iacute;gitos)</font> <font face="Verdana, Arial, Helvetica, sans-serif">&nbsp; </font></td>
+          (4 digitos)</font> <font face="Verdana, Arial, Helvetica, sans-serif">&nbsp; </font></td>
           </tr>
           <tr>
-            <td valign="top"><div align="right"><strong><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Coment&aacute;rio:</font></strong></div>
+            <td valign="top"><div align="right"><strong><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Comentario:</font></strong></div>
                 <div align="center"> </div></td>
             <td><font face="Verdana, Arial, Helvetica, sans-serif">
               <textarea name="comentario" cols="60" rows="4" id="responsavel8"></textarea>
@@ -98,7 +103,7 @@
   </tr>
   <tr> 
     <td colspan="2"><div align="center"> 
-        Rodap&eacute; aqui </div></td>
+        </div></td>
   </tr>
 </table>
 </body>

@@ -13,12 +13,18 @@
   <tr> 
     <td width="22%" height="37" valign="top"> 
       Menu lateral aqui </td>
-    <td valign="top"> <p align="center"> <?php
+    <td valign="top"> <p align="center"> 
+        
+        
+        
+        
+        
+        <?php
 // Conexao com o BD
 include "conecta_mysql.inc";
 // Pegar a pagina atual por GET
-$p = $INPUT_GET["p"];
-$datas = $INPUT_GET["data"];
+$p = $_GET["p"];
+$datas = $_GET["data"];
 // Verifica se a variavel esta declarada, senao deixa na primeira pagina como padrao
 if(isset($p)) {
 $p = $p;
@@ -35,8 +41,8 @@ $consulta = "SELECT * FROM fotos where data='$datas' and status='Sim' order by i
 // executar query
 // bloco 5 - exiba os registros na tela
 //echo "<ul>";
-$query = mysql_query($consulta);
-while (list($id,$evento,$comentario,$path,$data,$data_cad,$data_alt,$ip,$status) = mysql_fetch_array($query))//Por ser uma lista, os sampos devem ser seguidos conforme a sequencia no Banco de Dados. Caso nao queira todos os campos, deixar espacos em branco
+$query = mysqli_query($conexao,$consulta);
+while (list($id,$evento,$comentario,$path,$data,$data_cad,$data_alt,$ip,$status) = mysqli_fetch_array($query))//Por ser uma lista, os sampos devem ser seguidos conforme a sequencia no Banco de Dados. Caso nao queira todos os campos, deixar espacos em branco
 {
 echo'<br>';
 echo'<p align="center"><font size="4" face="Verdana">'.$evento.'</font></font></p>';
@@ -56,9 +62,9 @@ echo "<br />";
 // para pegarmos o n�mero total de registros
 $sql_select_all = "SELECT * FROM fotos where data='$datas' and status='Sim' order by id";
 // Executa o query da sele��o acimas
-$sql_query_all = mysql_query($sql_select_all);
+$sql_query_all = mysqli_query($conexao, $sql_select_all);
 // Gera uma vari�vel com o n�mero total de registros no banco de dados
-$total_registros = mysql_num_rows($sql_query_all);
+$total_registros = mysqli_num_rows($sql_query_all);
 // Gera outra vari�vel, desta vez com o n�mero de p�ginas que ser� precisa. 
 // O comando ceil() arredonda 'para cima' o valor
 $pags = ceil($total_registros/$qnt);
@@ -100,10 +106,7 @@ echo "<a href='galeria3.php?p=".$pags."&data=".$datas."' target='_self'>�ltima
       <div align="center"></div>
       <div align="center"></div>    </td>
   </tr>
-  <tr> 
-    <td height="18" colspan="2"> <div align="center"> 
-        Rodap&eacute; aqui </div></td>
-  </tr>
+ 
 </table>
 </body>
 </html>
